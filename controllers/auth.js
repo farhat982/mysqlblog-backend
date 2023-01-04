@@ -7,13 +7,13 @@ export const register = (req, res) => {
 
   const q = 'SELECT * FROM users WHERE email = ? OR username = ?'
 
-  db.query(q, [req.body.email, req.body.username], (error, data) => {
+  db.query(q, [req.body.email, req.body.username], async (error, data) => {
     if (error) return res.status(400).json(error)
     if (data.length) return res.status(409).jsob('user already exists')
     //hash password and create user
 
-    const salt = bcrypt.genSalt(10)
-    const hash = bcrypt.hash(req.body.password, salt)
+    const salt = await bcrypt.genSalt(10)
+    const hash = await bcrypt.hash(req.body.password, salt)
 
     const q = 'INSERT INTO users(`username`,`email`,`password`) VALUES (?)'
     const values = [req.body.username, req.body.email, hash]
@@ -28,12 +28,12 @@ export const login = (req, res) => {
   //chevk user
   const q = 'SELECT * FROM users WHERE username = ?'
 
-  db.query(q, [req.body.username], (error, data) => {
+  db.query(q, [req.body.username], async (error, data) => {
     if (error) return res.json(error)
     if (data.length == 0) return res.status(404).json('User do not exists')
 
     //check password
-    const isPasswordCorrect = bcrypt.compare(
+    const isPasswordCorrect = await bcrypt.compare(
       req.body.password,
       data[0].password
     )
