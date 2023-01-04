@@ -12,8 +12,8 @@ export const register = (req, res) => {
     if (data.length) return res.status(409).jsob('user already exists')
     //hash password and create user
 
-    const salt = bcrypt.genSaltSync(10)
-    const hash = bcrypt.hashSync(req.body.password, salt)
+    const salt = bcrypt.genSalt(10)
+    const hash = bcrypt.hash(req.body.password, salt)
 
     const q = 'INSERT INTO users(`username`,`email`,`password`) VALUES (?)'
     const values = [req.body.username, req.body.email, hash]
@@ -33,7 +33,7 @@ export const login = (req, res) => {
     if (data.length == 0) return res.status(404).json('User do not exists')
 
     //check password
-    const isPasswordCorrect = bcrypt.compareSync(
+    const isPasswordCorrect = bcrypt.compare(
       req.body.password,
       data[0].password
     )
