@@ -1,4 +1,4 @@
-import express from 'express';
+import express {urlencoded} from 'express';
 import authRoutes from './routes/auth.js';
 import userRoutes from './routes/users.js';
 import postRoutes from './routes/posts.js';
@@ -11,7 +11,10 @@ import { CloudinaryStorage } from 'multer-storage-cloudinary';
 
 const app = express();
 
-;
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(bodyParser.json());
+
 
 app.use(cookieParser());
 app.use(
