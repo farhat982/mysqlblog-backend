@@ -49,6 +49,7 @@ export const login = (req, res) => {
       })
       .status(200)
       .json(other)
+    console.log(res.cookie)
   })
 }
 export const logout = (req, res) => {
