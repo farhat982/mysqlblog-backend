@@ -1,3 +1,4 @@
+import express from 'express';
 import authRoutes from './routes/auth.js';
 import userRoutes from './routes/users.js';
 import postRoutes from './routes/posts.js';
