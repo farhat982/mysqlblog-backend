@@ -48,7 +48,7 @@ export const login = (req, res) => {
 				httpOnly: true,
 				sameSite: 'none',
 				secure: true,
-				domain: 'render.com',
+				domain: 'onrender.com',
 			})
 			.status(200)
 			.json(other);
