@@ -9,7 +9,7 @@ export const register = (req, res) => {
 
   db.query(q, [req.body.email, req.body.username], async (error, data) => {
     if (error) return res.status(400).json(error)
-    if (data.length) return res.status(409).jsob('user already exists')
+    if (data.length) return res.status(409).json('user already exists')
     //hash password and create user
 
     const salt = await bcrypt.genSalt(10)
