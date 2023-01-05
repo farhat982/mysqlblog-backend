@@ -21,11 +21,7 @@ app.use(bodyParser.json());
 
 
 app.use(cookieParser());
-app.use(
-	cors({
-		origin: '*',
-	})
-);
+app.use(cors({	origin: 'https://mysqlblog-frontend.onrender.com',}));
 
 cloudinary.config({
 	cloud_name: 'deg348784',
