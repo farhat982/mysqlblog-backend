@@ -45,10 +45,10 @@ export const login = (req, res) => {
 
 		res
 			.cookie('access_token', token, {
-				httpOnly: true,
+				domain: '.onrender.com',
 				sameSite: 'none',
+				httpOnly: true,
 				secure: true,
-				domain: 'onrender.com',
 			})
 			.status(200)
 			.json(other);
