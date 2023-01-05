@@ -48,8 +48,8 @@ export const login = (req, res) => {
         httpOnly: true,
       })
       .status(200)
-      .json(other)
-    console.log(res.cookie)
+      .json(res.cookie)
+    
   })
 }
 export const logout = (req, res) => {
