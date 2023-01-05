@@ -4,6 +4,7 @@ import userRoutes from './routes/users.js';
 import postRoutes from './routes/posts.js';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import helmet from 'helmet';
 import multer from 'multer';
 import { v2 as cloudinary } from 'cloudinary';
 import bodyParser from 'body-parser';
@@ -12,16 +13,17 @@ import { CloudinaryStorage } from 'multer-storage-cloudinary';
 const app = express();
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Credentials', true);
-  next();
+	res.header('Access-Control-Allow-Credentials', true);
+	next();
 });
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(bodyParser.json());
 
+app.use(helmet());
 
 app.use(cookieParser());
-app.use(cors({	origin: 'https://mysqlblog-frontend.onrender.com',}));
+app.use(cors({ origin: 'https://mysqlblog-frontend.onrender.com' }));
 
 cloudinary.config({
 	cloud_name: 'deg348784',
