@@ -48,7 +48,7 @@ export const login = (req, res) => {
 				domain: '.onrender.com',
 				sameSite: 'lax',
 				httpOnly: true,
-				secure: false,
+				secure: true,
 			})
 			.status(200)
 			.json(other);
@@ -57,7 +57,9 @@ export const login = (req, res) => {
 export const logout = (req, res) => {
 	res
 		.clearCookie('access_token', {
-			sameSite: 'none',
+			domain: '.onrender.com',
+			sameSite: 'lax',
+			httpOnly: true,
 			secure: true,
 		})
 		.status(200)
