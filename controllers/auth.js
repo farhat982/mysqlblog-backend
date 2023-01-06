@@ -46,7 +46,7 @@ export const login = (req, res) => {
 		res
 			.cookie('access_token', token, {
 				domain: '.onrender.com',
-				sameSite: 'none',
+				sameSite: 'lax',
 				httpOnly: true,
 				secure: false,
 			})
