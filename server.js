@@ -27,6 +27,7 @@ app.use(
 	cors({ origin: 'https://mysqlblog-frontend.onrender.com', credentials: true })
 );
 app.set('trust proxy', 1);
+
 cloudinary.config({
 	cloud_name: 'deg348784',
 	api_key: '726844471184658',
