@@ -4,7 +4,7 @@ import userRoutes from './routes/users.js';
 import postRoutes from './routes/posts.js';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import helmet from 'helmet';
+// import helmet from 'helmet';
 import multer from 'multer';
 import { v2 as cloudinary } from 'cloudinary';
 import bodyParser from 'body-parser';
@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(bodyParser.json());
 
-app.use(helmet());
+// app.use(helmet());
 
 app.use(cookieParser());
 app.use(
