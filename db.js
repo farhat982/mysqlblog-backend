@@ -1,7 +1,7 @@
 import mysql from 'mysql2';
 
 export const db = mysql.createConnection({
-	host: 'database-1.cxsmhfcyfyu4.us-east-1.rds.amazonaws.com',
+	host: 'database-2.cxsmhfcyfyu4.us-east-1.rds.amazonaws.com',
 	user: 'root',
 	password: 'password',
 	database: 'blog'
